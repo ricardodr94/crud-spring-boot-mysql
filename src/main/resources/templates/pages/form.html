@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="shared/head :: head"></head>
+
+<body style="background-color: #34495E ;">
+   <!------------------------------------------NAVBAR---------------------------------------------------->
+    <nav th:replace="shared/navbar :: navbar"></nav>
+    
+    
+    <!------------------------------------------FORMULARIO---------------------------------------------------->
+    <a class="btn btn-outline-success text-white" style="margin: 20px 380px 0px; " th:href="@{/app/home}" role="button">Regresar</a>
+	<form  class="m-auto mt-4 p-4 border border-white rounded" th:action="@{/app/save}" method="POST" style="width: 500px; height:250px ;background-color:#212F3D" th:object="${usuario}">
+	    <input type="hidden" class="form-control" name="id"  th:field="*{id}">
+		<div class="form-group row mb-3">
+			<div class="col-6">
+				<input type="text" class="form-control" name="nombre" placeholder="Nombre" th:field="*{nombre}">
+				<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+			</div>
+			<div class="col-6">
+				<input type="text" class="form-control" name="cedula" placeholder="Cedula" th:field="*{cedula}">
+			    <span th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></span>
+			</div>
+		</div>
+		<div class=" form-group row mb-3">
+			<div class="col-6">
+				<input type="text" class="form-control" name="email" placeholder="Email" th:field="*{email}">
+				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			</div>
+			<div class="col-6">
+				<input type="text" class="form-control" name="celular" placeholder="Celular" th:field="*{celular}">
+				<span th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"></span>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-outline-primary text-white" style="width: 120px; margin-left: 160px; margin-top: 30px;">Enviar</button>
+	</form>
+</body>
+
+</html>
